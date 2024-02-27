@@ -7,3 +7,22 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+require 'faker'
+
+def create_new_flat
+Flat.create(
+  name: Faker::Name.name,
+  address: Faker::Address.street_address,
+  description: Faker::Restaurant.review,
+  price_per_night: rand(100..300),
+  number_of_guests: rand(1..5)
+)
+end
+
+puts "Creating Flats...."
+
+ 4.times do
+  create_new_flat
+ end
+
+ puts "Flats created..."
